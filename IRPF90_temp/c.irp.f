@@ -1,5 +1,5 @@
 
-BEGIN_PROVIDER [real*8, C,(rank,rank)]
+BEGIN_PROVIDER [real*8, C,(rank1,rank)]
 &BEGIN_PROVIDER [real*8, DD,(rank,rank)]
 &BEGIN_PROVIDER [real*8, EI,(rank,rank)]
 &BEGIN_PROVIDER [real*8, e,(rank)]
@@ -919,14 +919,14 @@ BEGIN_PROVIDER [real*8, C,(rank,rank)]
 
     write(6,*)'coefficient matrix C'
     do i=1,rank
-        do j=1,rank
+        do j=1,rank1
             write(6,12)c(j,i)
         enddo
             write(6,*)
     enddo
 
 
-        e0 =     0d0
+        e0 =   -1.176523105361*27.211
         e(1) =   -1.176523105361*27.211-e0
         e(2) =   -1.161424*27.211-e0
         e(3) =   -1.141147*27.211-e0

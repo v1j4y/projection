@@ -18,28 +18,28 @@ subroutine provide_c
   endif
  if (allocated (c) ) then
   irp_dimensions_OK = .True.
-  irp_dimensions_OK = irp_dimensions_OK.AND.(SIZE(c,1)==(rank))
+  irp_dimensions_OK = irp_dimensions_OK.AND.(SIZE(c,1)==(rank1))
   irp_dimensions_OK = irp_dimensions_OK.AND.(SIZE(c,2)==(rank))
   if (.not.irp_dimensions_OK) then
    deallocate(c,stat=irp_err)
    if (irp_err /= 0) then
      print *, irp_here//': Deallocation failed: c'
-     print *, ' size: (rank,rank)'
+     print *, ' size: (rank1,rank)'
    endif
-   if ((rank>0).and.(rank>0)) then
-    allocate(c(rank,rank),stat=irp_err)
+   if ((rank1>0).and.(rank>0)) then
+    allocate(c(rank1,rank),stat=irp_err)
     if (irp_err /= 0) then
      print *, irp_here//': Allocation failed: c'
-     print *, ' size: (rank,rank)'
+     print *, ' size: (rank1,rank)'
     endif
    endif
   endif
  else
-   if ((rank>0).and.(rank>0)) then
-    allocate(c(rank,rank),stat=irp_err)
+   if ((rank1>0).and.(rank>0)) then
+    allocate(c(rank1,rank),stat=irp_err)
     if (irp_err /= 0) then
      print *, irp_here//': Allocation failed: c'
-     print *, ' size: (rank,rank)'
+     print *, ' size: (rank1,rank)'
     endif
    endif
  endif
@@ -979,12 +979,12 @@ subroutine bld_c
         DD(20,10)=(   0.d0      )                                         ! c.irp.f: 915
     write(6,*)'coefficient matrix C'                                      ! c.irp.f: 920
     do i=1,rank                                                           ! c.irp.f: 921
-        do j=1,rank                                                       ! c.irp.f: 922
+        do j=1,rank1                                                      ! c.irp.f: 922
             write(6,12)c(j,i)                                             ! c.irp.f: 923
         enddo                                                             ! c.irp.f: 924
             write(6,*)                                                    ! c.irp.f: 925
     enddo                                                                 ! c.irp.f: 926
-        e0 =     0d0                                                      ! c.irp.f: 929
+        e0 =   -1.176523105361*27.211                                     ! c.irp.f: 929
         e(1) =   -1.176523105361*27.211-e0                                ! c.irp.f: 930
         e(2) =   -1.161424*27.211-e0                                      ! c.irp.f: 931
         e(3) =   -1.141147*27.211-e0                                      ! c.irp.f: 932
