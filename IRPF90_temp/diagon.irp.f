@@ -24,7 +24,7 @@ BEGIN_PROVIDER [real*8, DDD,(rank,rank)]
 
           do i=1,N
             do j=1,N
-                A(i,j)=DD(i,j)
+                A(i,j)=C(i,j)
             enddo
           enddo
 
@@ -58,7 +58,18 @@ BEGIN_PROVIDER [real*8, DDD,(rank,rank)]
 
           do i=1,N
             write(12,1022)i,W(i)
+            E(i)=W(i)
           enddo
+
+    do i=1,rank
+        do j=1,rank
+            if(j.eq.i)then
+            EI(j,i)=E(i)
+            else
+            EI(j,i)=0d0
+            endif
+        enddo
+    enddo
 
           do i=1,N
             write(22,1022)i,(A(i,j),j=1,N)

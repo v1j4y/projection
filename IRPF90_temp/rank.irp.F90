@@ -23,6 +23,6 @@ subroutine bld_rank
   use rank_mod
     implicit none                                                      ! rank.irp.f:   4
   character*(4) :: irp_here = 'rank'                                   ! rank.irp.f:   1
-    rank=20                                                            ! rank.irp.f:   9
+    rank=3                                                             ! rank.irp.f:   9
     rank1=22                                                           ! rank.irp.f:  10
 end subroutine bld_rank

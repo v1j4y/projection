@@ -75,7 +75,7 @@ subroutine bld_ddd
           JOBZ='V'                                                   ! diagon.irp.f:  22
           do i=1,N                                                   ! diagon.irp.f:  25
             do j=1,N                                                 ! diagon.irp.f:  26
-                A(i,j)=DD(i,j)                                       ! diagon.irp.f:  27
+                A(i,j)=C(i,j)                                        ! diagon.irp.f:  27
             enddo                                                    ! diagon.irp.f:  28
           enddo                                                      ! diagon.irp.f:  29
           do i=1,N                                                   ! diagon.irp.f:  31
@@ -97,13 +97,23 @@ subroutine bld_ddd
           endif                                                      ! diagon.irp.f:  57
           do i=1,N                                                   ! diagon.irp.f:  59
             write(12,1022)i,W(i)                                     ! diagon.irp.f:  60
-          enddo                                                      ! diagon.irp.f:  61
-          do i=1,N                                                   ! diagon.irp.f:  63
-            write(22,1022)i,(A(i,j),j=1,N)                           ! diagon.irp.f:  64
-          enddo                                                      ! diagon.irp.f:  65
-          do i=1,N                                                   ! diagon.irp.f:  67
-            do j=1,N                                                 ! diagon.irp.f:  68
-                DDD(i,j)=A(i,j)                                      ! diagon.irp.f:  69
-            enddo                                                    ! diagon.irp.f:  70
-          enddo                                                      ! diagon.irp.f:  71
+            E(i)=W(i)                                                ! diagon.irp.f:  61
+          enddo                                                      ! diagon.irp.f:  62
+    do i=1,rank                                                      ! diagon.irp.f:  64
+        do j=1,rank                                                  ! diagon.irp.f:  65
+            if(j.eq.i)then                                           ! diagon.irp.f:  66
+            EI(j,i)=E(i)                                             ! diagon.irp.f:  67
+            else                                                     ! diagon.irp.f:  68
+            EI(j,i)=0d0                                              ! diagon.irp.f:  69
+            endif                                                    ! diagon.irp.f:  70
+        enddo                                                        ! diagon.irp.f:  71
+    enddo                                                            ! diagon.irp.f:  72
+          do i=1,N                                                   ! diagon.irp.f:  74
+            write(22,1022)i,(A(i,j),j=1,N)                           ! diagon.irp.f:  75
+          enddo                                                      ! diagon.irp.f:  76
+          do i=1,N                                                   ! diagon.irp.f:  78
+            do j=1,N                                                 ! diagon.irp.f:  79
+                DDD(i,j)=A(i,j)                                      ! diagon.irp.f:  80
+            enddo                                                    ! diagon.irp.f:  81
+          enddo                                                      ! diagon.irp.f:  82
 end subroutine bld_ddd
