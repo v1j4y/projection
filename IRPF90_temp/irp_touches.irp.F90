@@ -1,5 +1,6 @@
 subroutine irp_finalize_2027207563
  use c_mod
+ use diagon_mod
  use rank_mod
   if (allocated(c)) then
     c_is_built = .False.
@@ -16,5 +17,9 @@ subroutine irp_finalize_2027207563
   if (allocated(ei)) then
     c_is_built = .False.
     deallocate(ei)
+  endif
+  if (allocated(ddd)) then
+    ddd_is_built = .False.
+    deallocate(ddd)
   endif
 end

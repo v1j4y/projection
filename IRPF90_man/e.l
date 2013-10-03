@@ -12,3 +12,6 @@ c.irp.f
 .SH Needs
 rank
 .br
+.SH Needed by
+ddd
+.br

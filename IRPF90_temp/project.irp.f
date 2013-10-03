@@ -3,14 +3,16 @@ program project
 
     integer :: i,j,k,l,m,temp
     integer,allocatable :: maxj(:)
-    real*8,allocatable :: p(:,:),max(:)
+    real*8,allocatable :: p(:,:),max(:),summ(:)
     real*8 :: maxe
 
     allocate (p(rank1,rank))
     allocate (maxj(rank))
     allocate (max(rank))
+    allocate (summ(rank1))
 
     p=0d0
+    summ=0
 
     do i=1,rank
         do j=1,rank1
@@ -25,6 +27,7 @@ program project
 !   maxj=0
     do i=1,rank
         do j=1,rank1
+            summ(j)+=abs(p(j,i))
             if(max(i).le.abs(p(j,i)))then
                 max(i)=abs(p(j,i))
                 maxj(i)=j
@@ -36,7 +39,7 @@ program project
 
     write(6,*)'maxs'
     do i=1,rank
-        write(6,*)i,"-",maxj(i),max(i)
+        write(6,*)i,"-",maxj(i),max(i),summ(i)
     enddo
 
     do i=1,rank
