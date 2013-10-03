@@ -6,6 +6,6 @@ BEGIN_PROVIDER [integer, rank]
     ! nestados and ncas
     ! END_DOC
 
-    rank=20
+    rank=3
     rank1=22
 END_PROVIDER

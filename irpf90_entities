@@ -1,4 +1,4 @@
-c.irp.f                   : real*8, allocatable       :: c                         (rank1,rank)
+c.irp.f                   : real*8, allocatable       :: c                         (rank,rank)
 c.irp.f                   : real*8, allocatable       :: dd                        (rank,rank)
 diagon.irp.f              : real*8, allocatable       :: ddd                       (rank,rank)
 c.irp.f                   : real*8, allocatable       :: e                         (rank)

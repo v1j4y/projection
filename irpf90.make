@@ -12,7 +12,7 @@ project: IRPF90_temp/project.irp.o IRPF90_temp/project.irp.module.o $(OBJ1)
 IRPF90_temp/c.irp.o: IRPF90_temp/c.irp.module.o  IRPF90_temp/rank.irp.module.o 
 IRPF90_temp/diagon.irp.o: IRPF90_temp/diagon.irp.module.o  IRPF90_temp/rank.irp.module.o  IRPF90_temp/c.irp.module.o 
 IRPF90_temp/rank.irp.o: IRPF90_temp/rank.irp.module.o  
-IRPF90_temp/project.irp.o: IRPF90_temp/project.irp.module.o  IRPF90_temp/rank.irp.module.o  IRPF90_temp/c.irp.module.o 
+IRPF90_temp/project.irp.o: IRPF90_temp/project.irp.module.o  IRPF90_temp/rank.irp.module.o  IRPF90_temp/diagon.irp.module.o  IRPF90_temp/c.irp.module.o 
 IRPF90_temp/irp_touches.irp.o:  IRPF90_temp/c.irp.o IRPF90_temp/c.irp.o  IRPF90_temp/diagon.irp.o IRPF90_temp/diagon.irp.o  IRPF90_temp/rank.irp.o IRPF90_temp/rank.irp.o
 IRPF90_temp/%.irp.module.o: IRPF90_temp/%.irp.module.F90
 	$(FC) $(FCFLAGS) -c IRPF90_temp/$*.irp.module.F90 -o IRPF90_temp/$*.irp.module.o
