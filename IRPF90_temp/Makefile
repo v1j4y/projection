@@ -1,7 +1,7 @@
 IRPF90 = irpf90  #-a -d
 FC     = ifort
 #FCFLAGS= -O2
-FCFLAGS= -g -O2 -axAVX #-traceback -C #-heap-arrays
+FCFLAGS= -g -O2 -axAVX -traceback -C #-heap-arrays
 
 SRC=
 OBJ=
